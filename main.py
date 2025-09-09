@@ -1,23 +1,17 @@
 
-import discord
-from discord.ext import commands
-
-intents = discord.Intents.default()
-intents.message_content = True  # <-- add this line
-bot = commands.Bot(command_prefix="!", intents=intents)
-
-
 import os
 import discord
 from discord import app_commands
 from discord.ext import commands
 from datetime import datetime, timezone
 
-# Grab token from environment
+# Get token from Render environment
 TOKEN = os.getenv("DISCORD_TOKEN")
 print("TOKEN present:", bool(TOKEN))  # debug check in Render logs
 
+# Intents
 intents = discord.Intents.default()
+intents.message_content = True   # ✅ allow reading message content
 bot = commands.Bot(command_prefix="!", intents=intents)
 
 # In-memory time log
